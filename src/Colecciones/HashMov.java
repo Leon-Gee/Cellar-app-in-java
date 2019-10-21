@@ -6,8 +6,9 @@
 /*
 author:  Leon
 */
-package Movimientos;
+package Colecciones;
 
+import clasesBase.Movto_Almacen;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Enumeration;

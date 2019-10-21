@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Menus;
+package Aplicacion;
 
 /**
  *
  * @author  Leon
  * 
  */
+import Colecciones.hashBodega;
+import clasesBase.Bodega;
 import java.awt.*;
 import javax.swing.*;
-import Bodega.*;
 import java.util.*;
 
 public class TablaB extends JDialog {

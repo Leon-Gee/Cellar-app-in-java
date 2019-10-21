@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Menus;
+package Aplicacion;
 
-import Movimientos.HashMov;
-import Movimientos.Movto_Almacen;
-import Bodega.*;
-import hortaliza.hashHortaliza;
+import Colecciones.HashMov;
+import clasesBase.Movto_Almacen;
+import Colecciones.hashHortaliza;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
@@ -31,7 +30,7 @@ public class TablaM extends JDialog {
         coleH = coleHz;
         coleM = cole;
 
-        String[] Columnas = {"CLAVE", "TIPO DE HORTALIZA", "CANTIDAD", "TIPO DE MOVIMIENTO", "FECHA", "RESPONSABLE", "CLAVE DE LA BODEGA"};
+        String[] Columnas = {"CLAVE HORTALIZA", "TIPO DE HORTALIZA", "CANTIDAD", "TIPO DE MOVIMIENTO", "FECHA", "RESPONSABLE", "CLAVE DE LA BODEGA"};
         Object[][] datos = new Object[coleM.RegresaSize()][7];
         int con = 0;
         if (tipoMov == 0) {
@@ -56,7 +55,7 @@ public class TablaM extends JDialog {
             while (e.hasMoreElements()) {
                 String f = e.nextElement();
                 Movto_Almacen m = coleM.mostrar(f);
-                if (m.getTipoMvto().equals("ALTA")) {
+                if (m.getTipoMvto().equals("ENTRADA")) {
                     datos[con][0] = f;
                     datos[con][1] = m.getClvHortaliza();
                     datos[con][2] = m.getCantidad();
@@ -74,7 +73,7 @@ public class TablaM extends JDialog {
             while (e.hasMoreElements()) {
                 String f = e.nextElement();
                 Movto_Almacen m = coleM.mostrar(f);
-                if (m.getTipoMvto().equals("BAJA")) {
+                if (m.getTipoMvto().equals("SALIDA")) {
                     datos[con][0] = f;
                     datos[con][1] = m.getClvHortaliza();
                     datos[con][2] = m.getCantidad();

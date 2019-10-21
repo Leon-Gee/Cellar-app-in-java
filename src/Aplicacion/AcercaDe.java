@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Menus;
+package Aplicacion;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import material.componentes.*;
+import mdlaf.utils.*;
 
 /**
  *
@@ -16,36 +18,48 @@ import java.awt.event.*;
 public class AcercaDe extends JDialog {
 
     private JLabel lblKatKaty, lblPeñururu;
-    private JButton btnMuestra;
+    private MaterialButton btnMuestra;
     private JFrame fram;
 
     public AcercaDe(JFrame fram) {
         super(fram, true);
-         setTitle("OSWALDO LEON");
+        setTitle("OSWALDO LEON");
         setLayout(new FlowLayout());
+        setModal(true);
 
-        lblKatKaty = new JLabel("INTEGRANTES DEL EQUIPO:"
-                + " "
-                + " "
-                + " ");
+        lblKatKaty = new JLabel("INTEGRANTES DEL EQUIPO: ");
         lblKatKaty.setVisible(false);
         lblPeñururu = new JLabel(" OSCAR OSWALDO MEZA LEON ");
         lblPeñururu.setVisible(false);
+        
 
-        btnMuestra = new JButton("Muestra integrantes");
-        btnMuestra.setSize(550, 550);
-        btnMuestra.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                lblKatKaty.setVisible(true);
-                lblPeñururu.setVisible(true);
-            }
-
-        });
         add(lblKatKaty);
         add(lblPeñururu);
+        
+        btnMuestra = new MaterialButton();
+        btnMuestra.setText("Muestra integrantes");
+        btnMuestra.setRippleColor(MaterialColor.GREEN_800);
+        btnMuestra.setBackground(MaterialColors.GREEN_300);
+        Dimension d = new Dimension(250,150);
+        btnMuestra.setPreferredSize(d);
+        btnMuestra.setBorderRadius(6);
+   //     btnMuestra.setBounds(30, 300, 200, 60);
+        btnMuestra.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        btnMuestra.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == btnMuestra){
+                lblKatKaty.setVisible(true);
+                lblPeñururu.setVisible(true);
+                
+                }
+            }
+            
+        });
+
         add(btnMuestra);
         setLocationRelativeTo(null);
-        fram.setVisible(true);
+        setVisible(false);
 
     }
 }

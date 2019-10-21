@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bodega;
+package Colecciones;
 
+import clasesBase.Bodega;
 import java.util.Enumeration;
 import java.util.Hashtable;
 

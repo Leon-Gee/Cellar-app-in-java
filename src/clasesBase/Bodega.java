@@ -3,22 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bodega;
-
-
+package clasesBase;
 
 /**
  *
- * @author  Leon
+ * @author Leon
  */
-public class Bodega{
+public class Bodega {
 
-   private String Responsable, tipoHortaliza;
-   private float espacioTotal, espacioOcupado, espacioLibre;
-    
+    private String Responsable, tipoHortaliza;
+    private float espacioTotal, espacioOcupado, espacioLibre;
+
 
     /*   Hortaliza horta;*/
-    
     public Bodega(String Responsable, float espacioTotal, float espacioOcupado, String tipoHortaliza) {
         this.Responsable = Responsable;
         this.espacioTotal = espacioTotal;
@@ -32,10 +29,21 @@ public class Bodega{
         return espacioLibre;
     }
 
+    /*
+    +getResponsable()
+    +setResponsable()
+     +gettipoHortaliza()
+    +settipoHortaliza()
+     +getespacioTotal()
+    +setespacioTotal()
+     +getespacioOcupado()
+    +setespacioOcupado()
+     +getEspacioLibre()
+    +setEspacioLibre()
+     */
     public void setEspacioLibre(float espacioLibre) {
         this.espacioLibre = espacioLibre;
     }
-    
 
     public String getResponsable() {
         return Responsable;
@@ -68,6 +76,5 @@ public class Bodega{
     public void setTipoHortaliza(String tipoHortaliza) {
         this.tipoHortaliza = tipoHortaliza;
     }
-    
-    
+
 }

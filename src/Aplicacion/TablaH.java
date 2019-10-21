@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Menus;
+package Aplicacion;
 
 
-import hortaliza.Hortaliza;
-import hortaliza.hashHortaliza;
+import clasesBase.Hortaliza;
+import Colecciones.hashHortaliza;
 import java.awt.BorderLayout;
 import java.util.Enumeration;
 import javax.swing.JDialog;

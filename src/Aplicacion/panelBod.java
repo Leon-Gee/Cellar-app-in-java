@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bodega;
+package Aplicacion;
 
-import hortaliza.hashHortaliza;
+import Colecciones.hashBodega;
+import EventsMngrs.eventManagerBodega;
+import Colecciones.hashHortaliza;
+import lib.*;
 import javax.swing.*;
 import java.awt.*;
+import material.componentes.*;
+import mdlaf.utils.*;
+import java.util.Enumeration;
 
 /**
  *
@@ -18,10 +24,13 @@ public class panelBod extends JDialog {
     //Responsable (persona encargada de esa bodega),
     //Espacio total, Espacio ocupado, Tipo de Hortaliza que almacena
     hashBodega hashBod;
+    private final JComboBox<String> listaHortaliza;
+    private hashHortaliza hashHorta;
     private JLabel lblResponsable, lblEspacioTotal, lblEspacioOcupado, lblTipoHorta;
-    private JTextField txtResponsable, txtEspacioTotal, txtEspacioOcupado, txtTipoHorta;
+    private JStringField txtResponsable, txtTipoHorta;
+    private JEnteroField txtEspacioTotal, txtEspacioOcupado;
     private JFrame fram;
-    private JButton btnRegistrar;
+    private MaterialButton btnRegistrar;
 
     public panelBod(JFrame fram, hashBodega hashB, hashHortaliza hashH) {
 
@@ -30,19 +39,34 @@ public class panelBod extends JDialog {
         setLayout(new FlowLayout());
 
         hashBod = hashB;
+        hashHorta = hashH;
+        listaHortaliza = new JComboBox<String>();
+        Enumeration<String> e = hashH.ordenadorids();
+
+        while (e.hasMoreElements()) {
+            String f = e.nextElement();
+            listaHortaliza.addItem(f);
+        }
 
         lblResponsable = new JLabel("RESPONSABLE");
         lblEspacioTotal = new JLabel("ESPACIO TOTAL");
         lblEspacioOcupado = new JLabel("ESPACIO OCUPADO");
         lblTipoHorta = new JLabel("TIPO DE HORTALIZA");
 
-        txtResponsable = new JTextField(10);
-        txtEspacioTotal = new JTextField(10);
-        txtEspacioOcupado = new JTextField(10);
-        txtTipoHorta = new JTextField(10);
+        txtResponsable = new JStringField(10);
+        txtEspacioTotal = new JEnteroField(10);
+        txtEspacioOcupado = new JEnteroField(10);
+        txtTipoHorta = new JStringField(10);
 
-        btnRegistrar = new JButton("REGISTRAR");
-        btnRegistrar.setSize(550, 550);
+        btnRegistrar = new MaterialButton();
+        btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.setRippleColor(MaterialColor.GREEN_800);
+        btnRegistrar.setBackground(MaterialColors.GREEN_300);
+        btnRegistrar.setForeground(Color.yellow);
+        Dimension d = new Dimension(350, 150);
+        btnRegistrar.setPreferredSize(d);
+        btnRegistrar.setBorderRadius(6);
+        btnRegistrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnRegistrar.addActionListener(new eventManagerBodega(this, hashBod, hashH));
 
         add(lblResponsable);
@@ -55,7 +79,7 @@ public class panelBod extends JDialog {
         add(txtEspacioOcupado);
 
         add(lblTipoHorta);
-        add(txtTipoHorta);
+        add(listaHortaliza);
 
         add(btnRegistrar);
 
@@ -63,11 +87,15 @@ public class panelBod extends JDialog {
         fram.setVisible(true);
     }
 
+    public JComboBox<String> getListaHortaliza() {
+        return listaHortaliza;
+    }
+
     public JTextField getTxtResponsable() {
         return txtResponsable;
     }
 
-    public void setTxtResponsable(JTextField txtResponsable) {
+    public void setTxtResponsable(JStringField txtResponsable) {
         this.txtResponsable = txtResponsable;
     }
 
@@ -75,7 +103,7 @@ public class panelBod extends JDialog {
         return txtEspacioTotal;
     }
 
-    public void setTxtEspacioTotal(JTextField txtEspacioTotal) {
+    public void setTxtEspacioTotal(JEnteroField txtEspacioTotal) {
         this.txtEspacioTotal = txtEspacioTotal;
     }
 
@@ -83,7 +111,7 @@ public class panelBod extends JDialog {
         return txtEspacioOcupado;
     }
 
-    public void setTxtEspacioOcupado(JTextField txtEspacioOcupado) {
+    public void setTxtEspacioOcupado(JEnteroField txtEspacioOcupado) {
         this.txtEspacioOcupado = txtEspacioOcupado;
     }
 
@@ -99,7 +127,7 @@ public class panelBod extends JDialog {
         return txtTipoHorta;
     }
 
-    public void setTxtTipoHorta(JTextField txtTipoHorta) {
+    public void setTxtTipoHorta(JStringField txtTipoHorta) {
         this.txtTipoHorta = txtTipoHorta;
     }
 
